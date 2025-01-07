@@ -1,0 +1,22 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf packages/*/package-lock.json && rm -rf packages/*/node_modules && rm -rf packages/*/dist",
+    "dev": "lerna run dev --scope=@my-monorepo/web --stream",
+    "build:libs": "lerna run build --scope=@my-monorepo/package-* --stream",
+    "build:web": "lerna run build --scope=@my-monorepo/web --stream",
+    "preview": "lerna run preview --scope=@my-monorepo/web --stream",
+    "build": "npm run build:libs && npm run build:web",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^8.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "concurrently": "^8.0.0"
+  }
+} 
